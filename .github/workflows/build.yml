@@ -1,0 +1,24 @@
+name: build
+
+on:
+  push:
+    branches:
+      - main  
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Go
+      uses: actions/setup-go@v2
+      with:
+        go-version: 1.21.1  
+
+    - name: Build and test Go backend
+      run: |
+        cd src/main/backend
+        go test -v  # Run your Go tests
